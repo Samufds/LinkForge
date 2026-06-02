@@ -1,17 +1,24 @@
-# ⬡ LinkForge
+# LinkForge
 
-A **URL Shortener + YouTube Downloader** built with:
+LinkForge is a full stack web application with a URL shortener that generates short trackable links with custom aliases and a YouTube downloader.
 
-- **FastAPI** — async Python web framework
-- **PostgreSQL** — [Neon.tech](https://neon.tech)
-- **SQLAlchemy 2.0** — async-compatible ORM
-- **Pydantic v2** — request/response validation
-- **yt-dlp** — YouTube video & audio downloads
+## Features
+
+- Shorten any URL to a clean short link
+- Custom aliases (e.g. /my-link)
+- Click tracking on every visit shows the number of times you've visited the video.
+- Download as MP4 video or MP3 audio
+- Quality selection — Best, 720p, 480p, 360p
+
+## Tech Stack
+- HTML, CSS, JavaScript
+- PostgreSQL (hosted on Neon.tech)
+- FastAPI, Python, SQLAlchemy, Pydantic v2, yt-dlp, Uvicorn
 
 **Note: The downloader uses browser cookie authentication which works well when you run it on your own machine.**
 
 
-### 1. Clone & install
+## 1. Clone & install
 
 ```bash
 git clone <your-repo>
@@ -20,12 +27,12 @@ python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. Set up your database
+## 2. Set up your database
 
 **PostgreSQL for Database**
 - [neon.tech](https://neon.tech)
 
-Copy your connection string it will look like this: (`postgresql://user:pass@host/dbname`)
+Copy your connection string that will look like this: (`postgresql://user:pass@host/dbname`)
 
 ### 3. Configure environment
 
@@ -33,26 +40,6 @@ Copy your connection string it will look like this: (`postgresql://user:pass@hos
 cp .env.example .env
 ```
 
-### 4. Run
-
-```bash
-bash run.sh
-# or directly:
-uvicorn app.main:app --reload
-```
-
-Open **http://localhost:8000** — tables are created automatically on first run.
-
----
-
-**Create URL — example request:**
-```json
-POST /api/urls/
-{
-  "original_url": "https://example.com/very/long/path",
-  "custom_alias": "my-link"   // optional
-}
-```
-
+## Preview
 
 
