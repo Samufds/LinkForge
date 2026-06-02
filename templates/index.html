@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LinkForge — URL Shortener & YouTube Downloader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="grain"></div>
+
+    <header>
+    <div class="logo">
+      <span class="logo-icon">⬡</span>
+      <span class="logo-text">LinkForge</span>
+    </div>
+    <nav>
+      <button class="tab-btn active" data-tab="shorten">Shorten URL</button>
+      <button class="tab-btn" data-tab="youtube">YT Download</button>
+      <button class="tab-btn" data-tab="history">History</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ── SHORTEN TAB ── -->
+    <section class="tab-panel active" id="tab-shorten">
+      <div class="hero-text">
+        <h1>Make links<br/><em>unforgettable.</em></h1>
+        <p>Shorten any URL in under a second. Add custom aliases. Track clicks.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Enter the url to be shortened here</div>
+        <div class="input-group">
+          <input type="url" id="url-input" placeholder="Paste URL here" />
+        </div>
+        <div class="input-row">
+          <div class="input-group flex1">
+            <label>Custom alias <span class="optional">(optional)</span></label>
+            <div class="prefix-input">
+              <span class="prefix" id="base-url-prefix">localhost:8000/</span>
+              <input type="text" id="alias-input" placeholder="my-link" />
+            </div>
+          </div>
+          <button class="btn-primary" id="shorten-btn">
+            <span>Forge Link</span>
+          </button>
+        </div>
+        <div id="shorten-result" class="result-box hidden"></div>
+        <div id="shorten-error" class="error-box hidden"></div>
+      </div>
+
+      <!-- Recent URLs -->
+      <div class="card" id="recent-card">
+        <div class="card-label">RECENT LINKS</div>
+        <div id="urls-list" class="urls-list">
+          <div class="empty-state">No links yet. Forge your first one above!</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── YOUTUBE TAB ── -->
+    <section class="tab-panel" id="tab-youtube">
+      <div class="hero-text">
+        <h1>Download any<br/><em>YouTube video.</em></h1>
+        <p>Grab MP4 videos or extract MP3 audio. Choose your quality.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-label">FETCH VIDEO INFO</div>
+        <div class="input-group">
+          <input type="url" id="yt-url-input" placeholder="https://www.youtube.com/watch?v=..." />
+        </div>
+        <button class="btn-secondary" id="yt-info-btn">
+          <span>Get Info</span>
+          <span class="btn-icon">⬇</span>
+        </button>
+        <div id="yt-info-result" class="yt-info hidden"></div>
+        <div id="yt-error" class="error-box hidden"></div>
+      </div>
+
+      <div class="card hidden" id="yt-download-card">
+        <div class="card-label">DOWNLOAD OPTIONS</div>
+        <div class="download-opts">
+          <div class="opt-group">
+            <label>Format</label>
+            <div class="toggle-group">
+              <button class="toggle active" data-val="mp4" id="fmt-mp4">MP4 Video</button>
+              <button class="toggle" data-val="mp3" id="fmt-mp3">MP3 Audio</button>
+            </div>
+          </div>
+          <div class="opt-group" id="quality-group">
+            <label>Quality</label>
+            <div class="toggle-group">
+              <button class="toggle active" data-val="best">Best</button>
+              <button class="toggle" data-val="720p">720p</button>
+              <button class="toggle" data-val="480p">480p</button>
+              <button class="toggle" data-val="360p">360p</button>
+            </div>
+          </div>
+        </div>
+        <button class="btn-primary" id="yt-download-btn">
+          <span>Download</span>
+          <span class="btn-icon">↓</span>
+        </button>
+        <div id="dl-status" class="dl-status hidden"></div>
+      </div>
+    </section>
+
+    <!-- ── HISTORY TAB ── -->
+    <section class="tab-panel" id="tab-history">
+      <div class="hero-text">
+        <h1>Your<br/><em>link history.</em></h1>
+        <p>All created links and their click counts.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">ALL LINKS</div>
+        <div id="history-list" class="urls-list">
+          <div class="empty-state">Loading...</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
