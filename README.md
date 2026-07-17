@@ -41,5 +41,7 @@ cp .env.example .env
 ```
 
 ## Preview
+![image alt](LinkForge.png)
+![image alt](history.png)
 
 
